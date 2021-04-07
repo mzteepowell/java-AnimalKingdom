@@ -5,12 +5,18 @@ public abstract class Animals{
     protected int id;
     protected String name;
     protected int yearNamed;
+    protected String move;
+    protected String breathe;
+    protected String reproduce;
 
-    public Animals(String name, int yearNamed) {
+    public Animals(String name, int yearNamed, String move, String breathe, String reproduce) {
         id = maxId;
         maxId++;
         this.name = name;
         this.yearNamed = yearNamed;
+        this.move = move;
+        this.breathe = breathe;
+        this.reproduce = reproduce;
     }
 
     public int getId() {
@@ -35,14 +41,18 @@ public abstract class Animals{
         this.yearNamed = yearNamed;
     }
 
-    public abstract  String move(String moving);
+    public String getMove() {
+        return move;
+    };
 
-    public abstract String breathe(String breathing);
+    public String getBreath() {
+        return breathe;
+    };
 
-    public abstract String reproduce(String reproducing);
+    public String getReproduce() {
+        return reproduce;
+    }
     
-    public abstract String type(String type);
-
     @Override
     public String toString() {
         return ("Animals{id=" + id + ", name=" + name + ", yearNamed=" + yearNamed + "},\n");

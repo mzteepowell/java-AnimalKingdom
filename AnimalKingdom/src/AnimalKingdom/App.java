@@ -44,9 +44,9 @@ public class App {
         animals.add(perch);
 
         //*** List all the animals in descending order by year named ***
-        Comparator<Animals> reverseOrderbyYear = (Animals o1, Animals o2) -> Integer.compare(o1.getYearNamed(),
-                (o2.getYearNamed()));
-        Collections.sort(animals, reverseOrderbyYear.reversed());
+            Comparator<Animals> reverseOrderbyYear = (Animals o1, Animals o2) -> Integer.compare(o1.getYearNamed(),
+                    (o2.getYearNamed()));
+            Collections.sort(animals, reverseOrderbyYear.reversed());
         System.out.println("REVERSE ORDER BY YEAR");
         System.out.println(animals);
 
@@ -60,21 +60,21 @@ public class App {
         Collections.sort(animals, new Comparator<Animals>(){     
             @Override
             public int compare(Animals o3, Animals o4) {
-                return (int)(o3.move("move").compareTo(o4.move("move")));
+                return (int)(o3.getMove().compareTo(o4.getMove()));
             }
         });
 
-        Collections.sort(animals, (o3, o4) -> (o3.move("m").compareTo(o4.move("m"))));
+        Collections.sort(animals, (o3, o4) -> (o3.getMove().compareTo(o4.getMove())));
         System.out.println("\nORDERED BY MOVEMENT TYPE");
         System.out.println(animals);
         
         // *** List only those animals the breath with lungs ***
         System.out.println("\nFILTERED BY ANIMALS WHO BREATHE WITH LUNGS");
         for (Animals filtered : animals) {
-            if (filtered.breathe("breathe") == "lungs") {
+            if (filtered.getBreath() == "lungs") {
                 // animals2.add(filtered);
-                System.out.print(filtered.name + " " + filtered.reproduce("reproducing") + " "
-                        + filtered.move("moving") + " " + filtered.breathe("breathing") + " "
+                System.out.print(filtered.name + " " + filtered.getReproduce() + " "
+                        + filtered.getMove() + " " + filtered.getBreath() + " "
                         + filtered.yearNamed + "\n");
             }
         }
@@ -82,10 +82,10 @@ public class App {
         // *** List only those animals that breath with lungs and were named in 1758 ***
         System.out.println("\nFILTERED BY ANIMALS WHO BREATHE WITH LUNGS & WERE NAMED IN 1758");
         for (Animals filtered : animals) {
-            if (filtered.breathe("breathe") == "lungs" && filtered.yearNamed == 1758) {
+            if (filtered.getBreath() == "lungs" && filtered.yearNamed == 1758) {
                 // animals2.add(filtered);
-                System.out.print(filtered.name + " " + filtered.reproduce("reproducing") + " "
-                        + filtered.move("moving") + " " + filtered.breathe("breathing") + " "
+                System.out.print(filtered.name + " " + filtered.getReproduce() + " "
+                        + filtered.getMove() + " " + filtered.getBreath() + " "
                         + filtered.yearNamed + "\n");
             }
         }
@@ -93,10 +93,10 @@ public class App {
         //*** List only those animals that lay eggs and breath with lungs ***
         System.out.println("\nFILTERED BY ANIMALS WHO LAY EGGS & BREATHE WITH LUNGS");
         for (Animals filtered : animals) {
-            if (filtered.breathe("breathe") == "lungs" && filtered.reproduce("reproducing") == "eggs") {
+            if (filtered.getBreath() == "lungs" && filtered.getReproduce() == "eggs") {
                 // animals2.add(filtered);
-                System.out.print(filtered.name + " " + filtered.reproduce("reproducing") + " "
-                        + filtered.move("moving") + " " + filtered.breathe("breathing") + " "
+                System.out.print(filtered.name + " " + filtered.getReproduce() + " "
+                        + filtered.getMove() + " " + filtered.getBreath() + " "
                         + filtered.yearNamed + "\n");
             }
         }
@@ -122,8 +122,8 @@ public class App {
                 System.out.println("ANIMALS NAMED IN 1758 IN ALPHABETICAL ORDER");
                 for (Animals sorted : animals2) {
                     System.out.print(
-                        sorted.name + " " + sorted.reproduce("reproducing") + " " + sorted.move("moving")
-                                    + " " + sorted.breathe("breathing") + " " + sorted.yearNamed + "\n");
+                        sorted.name + " " + sorted.getReproduce() + " " + sorted.getMove()
+                                    + " " + sorted.getBreath() + " " + sorted.yearNamed + "\n");
                 }
 
                 //STRETCH
@@ -131,24 +131,16 @@ public class App {
                 // mammals ***
                 System.out.println("\nFILTERED BY ANIMALS WHO WERE NAMED IN 1758");
                 for (Animals filtered : animals) {
-                    if (filtered.type("type") == "mammals") {
+                    if (filtered.getClass() == Mammals.class && filtered.yearNamed == 1758) {
                         animals3.add(filtered);
-
                         // System.out.println(animals2);
                     }
                 }
-                Collections.sort(animals3, new Comparator<Animals>() {
-                    @Override
-                    public int compare(Animals o5, Animals o6) {
-                        return (int) (o5.name.compareTo(o6.name));
-                    }
-                });
-
-                Collections.sort(animals3, (o5, o6) -> (o5.name.compareTo(o6.name)));
+                
                 System.out.println("ANIMALS WHO ARE MAMMALS");
                 for (Animals sorted : animals3) {
-                    System.out.print(sorted.name + " " + sorted.reproduce("reproducing") + " " + sorted.move("moving")
-                            + " " + sorted.breathe("breathing") + " " + sorted.yearNamed + "\n");
+                    System.out.print(sorted.name + " " + sorted.getReproduce() + " " + sorted.getMove()
+                            + " " + sorted.getBreath() + " " + sorted.yearNamed + "\n");
                 }
         
     }
